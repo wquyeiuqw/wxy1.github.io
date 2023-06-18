@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Colorful Fireworks</title>
+    <style>
+        body {
+            background-color: black;
+            overflow: hidden;
+        }
+
+        #fireworks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .firework {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            border-radius: 50%;
+            animation: explode 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            80% {
+                transform: scale(3);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes changeColor {
+            0% {
+                background-color: red;
+            }
+            20% {
+                background-color: orange;
+            }
+            40% {
+                background-color: yellow;
+            }
+            60% {
+                background-color: green;
+            }
+            80% {
+                background-color: blue;
+            }
+            100% {
+                background-color: purple;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="fireworks"></div>
+
+    <script>
+        function createFirework() {
+            const firework = document.createElement('div');
+            firework.classList.add('firework');
+            firework.style.left = Math.random() * window.innerWidth + 'px';
+            firework.style.top = Math.random() * window.innerHeight + 'px';
+            firework.style.backgroundColor = 'red'; // 初始颜色
+            firework.style.animationDelay = Math.random() * 3 + 's'; // 随机延迟
+            document.getElementById('fireworks').appendChild(firework);
+        }
+
+        setInterval(createFirework, 500);
+    </script>
+</body>
+</html>
+
